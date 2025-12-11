@@ -1,0 +1,1314 @@
+// ###########################################################################
+// ATLUTD VIPs blockquote override 
+// ###########################################################################
+
+blockquote {
+    font-style: italic;
+    position: relative;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 6px solid $Quote_Block;
+    background: rgba(0, 0, 0, 0.03);
+    /* light dark-on-light wash */
+    color: $grey-11;
+}
+
+blockquote p {
+    font-style: italic;
+    color: $grey-10;
+}
+
+/* kill the big quote arrows */
+blockquote:before,
+blockquote:after {
+    content: none;
+}
+
+/* no extra dash before cite */
+blockquote cite:before {
+    content: "";
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs buttons & links 
+// ###########################################################################
+a,
+a:visited {
+    color: $ci-1;
+}
+
+a:hover,
+a:focus {
+    color: $ci-2;
+}
+
+.button,
+button,
+input[type="submit"],
+input[type="button"] {
+    background-color: $ci-1;
+    border-color: $ci-1;
+    color: $white;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: $ci-2;
+    border-color: $ci-2;
+    color: $ci-1;
+}
+
+
+// ###########################################################################
+// Home article cards - ATLUTD / Scarves-style 
+// ###########################################################################
+.home-card {
+    border-top: 3px solid $ci-5;
+    /* dark red stripe */
+    background: $white;
+    padding: 1rem 1.25rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* subtle separator between cards */
+.home-card+.home-card {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.home-card-thumb {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+
+// ###########################################################################
+// Meta row: author, date, icons if you add them later
+// ###########################################################################
+.home-card-meta {
+    font-size: 0.8rem;
+    color: #777777;
+    margin-bottom: 0.35rem;
+}
+
+.home-card-author {
+    font-weight: 600;
+}
+
+.home-card-separator {
+    margin: 0 0.35rem;
+}
+
+.home-card-title {
+    font-size: 1.4rem;
+    margin: 0 0 0.3rem;
+}
+
+.home-card-title a {
+    color: $ci-1;
+    text-decoration: none;
+}
+
+.home-card-title a:hover {
+    color: $ci-6;
+}
+
+.home-card-excerpt {
+    margin: 0.25rem 0 0.4rem;
+    color: #444444;
+}
+
+/* Read more link styled more like a button/CTA */
+.home-card-readmore {
+    margin: 0.2rem 0 0;
+}
+
+.home-card-readmore-link {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    color: $ci-5;
+    text-decoration: none;
+}
+
+.home-card-readmore-link:hover {
+    color: $ci-6;
+    /* gold on hover */
+}
+
+
+
+
+/* Article page header – aligned with card style */
+
+.article-header {
+    margin-bottom: 1.5rem;
+    border-top: 3px solid $ci-5;
+    /* dark red stripe */
+    padding-top: 1rem;
+}
+
+.article-title {
+    margin-bottom: 0.4rem;
+}
+
+.article-meta {
+    font-size: 0.85rem;
+    color: #777777;
+    margin-bottom: 0.8rem;
+}
+
+.article-meta-author {
+    font-weight: 600;
+}
+
+.article-meta-dot {
+    margin: 0 0.35rem;
+}
+
+.article-meta-reading {
+    text-transform: none;
+}
+
+/* Hero image spacing */
+.article-hero {
+    margin: 1rem 0 1.25rem;
+}
+
+.article-hero img {
+    border-radius: 3px;
+    display: block;
+}
+
+/* Make blockquotes + links still match frontpage style */
+.article-header+[itemprop="articleSection"] blockquote {
+    margin-top: 1.25rem;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs Page / Section Header  - ex: "Latest Articles"
+// ###########################################################################
+.section-heading {
+    margin: 3rem 0 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.section-heading h1 {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0;
+    padding: 0 1rem;
+    border-bottom: 3px solid $ci-4; //#a00000;
+}
+
+.section-heading::before,
+.section-heading::after {
+    content: "";
+    position: absolute;
+    top: 55%;
+    width: 25%;
+    //border-top: 1px solid #aaa;
+    /* medium gray line */
+}
+
+.section-heading::before {
+    left: 0;
+}
+
+.section-heading::after {
+    right: 0;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs Alerts
+// Good for: 
+//   Breaking news (“Ronny Deila fired — story developing !”) 
+//   Club announcements Major article releases (“2026 Season Preview just published !”) 
+//   Matchday reminders
+// ###########################################################################
+.site-alert {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.site-alert__icon {
+    font-size: 1rem;
+}
+
+.site-alert__text {
+    text-decoration: none;
+}
+
+/* Base styles for link/text */
+.site-alert__text,
+.site-alert__text:visited {
+    color: inherit;
+}
+
+.site-alert__text:hover {
+    text-decoration: underline;
+}
+
+/* Type-specific colors */
+.site-alert--info {
+    background-color: #f4ff5c;
+    color: #333;
+}
+
+.site-alert--good {
+    background-color: #48ffa9;
+    color: #005826;
+}
+
+.site-alert--bad {
+    background-color: #842029;
+    color: #f8d7da;
+}
+
+.site-alert--transfer {
+    background-color: #45a2ff;
+    color: #1d006b;
+}
+
+.site-alert--retire {
+    background-color: #45a2ff;
+    color: #1d006b;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs breadcrumbs
+// ###########################################################################
+.breadcrumbs {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    color: #888;
+}
+
+.breadcrumbs a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs .current {
+    font-weight: 600;
+}
+
+.breadcrumbs-separator {
+    margin: 0 0.4rem;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs Horizontal lines
+// ###########################################################################
+
+hr {
+    border: 0;
+    border-top: 3px solid $ci-4;
+    height: 0;
+    position: relative;
+    margin: 2rem auto;
+    width: 90%;
+    overflow: visible;
+    /* just in case anything is clipping */
+}
+
+/* The soccer ball */
+hr::after {
+    content: "⚽";
+    display: inline-block;
+    position: absolute;
+    top: -0.75em;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $white;
+    padding: 0 0.4em;
+    font-size: 1.2rem;
+    /* Size of ball */
+    line-height: 1;
+    /* avoid getting squashed */
+}
+
+// ###########################################################################
+// ATLUTD VIPs Horizontal lines
+// ###########################################################################
+
+/* Article title links – frontpage + pagination */
+.home-card-title a,
+/* frontpage */
+.row .columns h2>a {
+    /* pagination lists */
+    color: $ci-3 !important;
+    text-decoration: none;
+}
+
+/* Hover effect */
+.home-card-title a:hover,
+.row .columns h2>a:hover {
+    color: $secondary-color !important;
+    text-decoration: none;
+}
+
+// ###########################################################################
+/* ATLUTD VIPs - categories
+// ###########################################################################
+/* Category bar (top of article, frontpage cards, pagination) */
+.categories,
+.home-card-categories {
+    font-size: 0.8rem;
+    /* smaller & more subtle */
+    margin-bottom: 0.4rem;
+}
+
+/* Category links – gold pills */
+.categories a,
+.home-card-categories a {
+    color: $ci-3 !important;
+    text-decoration: none;
+    font-weight: 600;
+    background: rgba($ci-3, 0.15);
+    border-radius: 4px;
+    padding: 0 0.25em;
+}
+
+/* Hover */
+.categories a:hover,
+.home-card-categories a:hover {
+    color: $secondary-color !important;
+    text-decoration: underline;
+}
+
+// ###########################################################################
+/* ATLUTD VIPs - Dot between categories */
+// ###########################################################################
+.article-meta-dot {
+    margin: 0 0.25em;
+    color: $ci-3;
+    font-weight: bold;
+}
+
+.article-meta-author {
+    color: $ci-3;
+    /* gold */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+// ###########################################################################
+// ATLUTD VIPs - Authors
+// ###########################################################################
+
+.article-meta-author:hover {
+    color: $ci-3 !important;
+    text-decoration: none;
+}
+
+.author-header {
+    margin-bottom: 1.5rem;
+}
+
+.author-meta {
+    font-size: 0.9rem;
+    color: $grey-9;
+}
+
+.author-role {
+    font-weight: 600;
+}
+
+.author-meta a {
+    color: $ci-3 !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.author-meta a:hover {
+    color: $ci-3 !important;
+    text-decoration: none;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs - Author Page
+// ###########################################################################
+.author-card {
+    background: $white;
+    border: 1px solid $grey-3;
+    padding: 1.5rem;
+    border-radius: 4px;
+}
+
+.author-avatar img {
+    max-width: 180px;
+    object-fit: cover;
+    /* crops to center if aspect ratio differs */
+    border-radius: 6px;
+    /* slight round corners */
+    display: block;
+    margin: 0 auto 1rem auto;
+    /* centered image */
+}
+
+.author-name {
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+}
+
+.author-role {
+    font-size: 0.9rem;
+    color: $grey-8;
+    margin-bottom: 1rem;
+}
+
+.author-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.author-links li {
+    margin-bottom: 0.25rem;
+}
+
+.author-links a {
+    color: $ci-3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.author-links a:hover {
+    color: $secondary-color;
+    text-decoration: underline;
+}
+
+.author-links .icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    vertical-align: middle;
+    opacity: 0.85;
+}
+
+.author-links a:hover .icon {
+    opacity: 1;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs - The Authors
+// ###########################################################################
+/* Author list cards on /authors */
+.author-list .author-card {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid $grey-2;
+    border-radius: 4px;
+    background: $white;
+    margin-bottom: 1.5rem;
+}
+
+/* Small avatar used on the authors index page */
+.author-avatar-sm {
+    width: 96px;
+    //height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1.5rem;
+    display: block;
+}
+
+.author-card .author-info {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.author-avatar-link:link,
+.author-avatar-link:visited,
+.author-avatar-link:hover,
+.author-avatar-link:active {
+    text-decoration: none !important;
+    border: none !important;
+}
+
+
+
+// ###########################################################################
+// ATLUTD VIPs - The Authors
+// ###########################################################################
+#header-home {
+    background-color: $ci-1;
+    padding: 2rem 0; // padding: 0;
+    text-align: center;
+}
+
+/* Letterbox banner image */
+#masthead-with-background-color {
+    text-align: center;
+    background-color: $ci-1;
+}
+
+/* fixed-height container that crops the banner image */
+#masthead-with-background-color .masthead-banner-frame {
+    max-height: 200px;
+    /* only show up to 200px */
+    overflow: hidden;
+    /* hide anything outside the 300px window */
+    position: relative;
+    /* establish positioning context for the image */
+    margin: 0 auto;
+}
+
+/* Actual banner image inside the container – keep aspect ratio, no distortion */
+/* center it within the container */
+#masthead-with-background-color .masthead-banner {
+    width: 100%;
+    max-width: 1600px;
+    /* optional cap on very large screens */
+    height: auto;
+    /* keep original aspect ratio */
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    /* establish positioning context for the image */
+    top: 50%;
+    /* move image’s center into the middle of the frame */
+    transform: translateY(-50%);
+}
+
+/* Letterboxed Header Image */
+.header-home-image {
+    width: 100%;
+    max-width: 1600px;
+    /* max displayed width */
+    height: 300px;
+    /* consistent banner height */
+    object-fit: cover;
+    /* crop image to fill area */
+    object-position: center center;
+    /* keep main focus area */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+    #masthead-with-background-color .masthead-banner {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        /* fluid */
+    }
+
+    table th,
+    table td {
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* Logo over the banner (centered, no extra height) */
+.masthead-logo-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* raise a bit above exact center */
+    z-index: 2;
+    /* above the banner image */
+    display: block;
+}
+
+.masthead-logo {
+    height: 175px;
+    /* tweak this as you like */
+    width: auto;
+    object-fit: contain;
+    image-rendering: auto;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+}
+
+/* Smaller logo on phones so it doesn’t crowd the nav */
+@media (max-width: 768px) {
+    .masthead-logo {
+        height: 60px;
+    }
+}
+
+// ###########################################################################
+// ATLUTD VIPs - Tables
+// ###########################################################################
+/* ATLUTD VIPs Table Styling */
+
+table {
+    width: auto;
+    /* keeps table tight to content */
+    margin: 1.5rem auto;
+    border-collapse: collapse;
+    background: $white;
+    border: 2px solid $ci-2;
+}
+
+table th {
+    background-color: transparentize($ci-3, 0.70);
+    color: $ci-1;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid $ci-2;
+}
+
+table td {
+    border: 1px solid $ci-2;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+}
+
+/* Alternating row striping */
+table tr:nth-child(even) td {
+    background-color: transparentize($white, 0.99);
+}
+
+table tr:nth-child(odd) td {
+    background-color: transparentize($grey-6, 0.99);
+}
+
+// ###########################################################################
+// ATLUTD VIPs - Footer
+// ###########################################################################
+/* Footer section layout */
+.footer-section {
+    margin-bottom: 1.5rem;
+}
+
+/* Section titles – standardized look + underline */
+#footer .footer-section-title,
+#subfooter .footer-section-title {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.5rem 0;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid $ci-4;
+    /* standard underline color */
+    color: $body-bg;
+    /* standard text color */
+}
+
+/* List + items */
+.footer-section-list {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-item {
+    margin: 0.15rem 0;
+    font-size: 0.85rem;
+    color: $grey-3;
+}
+
+/* Icons */
+#footer .footer-icon,
+#subfooter .footer-icon {
+    //width:  16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    margin-right: 0.35rem;
+    opacity: 0.9;
+}
+
+.footer-item-note {
+    font-style: italic;
+    color: $ci-1;
+}
+
+
+/* Make footer + subfooter links visually consistent */
+#footer .footer-section-list a,
+#subfooter .footer-section-list a {
+    color: $grey-3;
+    text-decoration: none;
+}
+
+#footer .footer-section-list a:hover,
+#subfooter .footer-section-list a:hover {
+    color: $grey-3;
+    text-decoration: underline;
+}
+
+/* Make sure the text around the links also uses the same grey */
+#footer .footer-item,
+#subfooter .footer-item {
+    color: $grey-3;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs - Changelog
+// ###########################################################################
+.changelog-list {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.changelog-item {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba($grey-3, 0.4);
+}
+
+.changelog-header {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+}
+
+.changelog-message {
+    color: $ci-3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.changelog-message:hover {
+    color: $secondary-color;
+    text-decoration: underline;
+}
+
+.changelog-meta {
+    font-size: 0.8rem;
+    color: $grey-6;
+}
+
+.changelog-author {
+    font-weight: 400;
+}
+
+
+
+
+// ###########################################################################
+// ATLUTD VIPs - Emoji Tooltips (Automated)
+// ###########################################################################
+
+.todo-emoji {
+    position: relative;
+    display: inline-block;
+    margin: 0 0.05rem;
+    width: 1.2em;
+    text-align: center;
+    font-size: 1.2rem;
+    /* <-- increase emoji size */
+    line-height: 1;
+}
+
+/* Tooltip bubble */
+.todo-emoji::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 50%;
+    bottom: 135%;
+    transform: translateX(-50%);
+    background-color: $ci-1;
+    color: $white;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.4rem;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.12s;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.todo-emoji:hover::after {
+    opacity: 1;
+}
+
+/* Tooltip text definitions */
+.todo-emoji[data-status="new"] {
+    --tip: "New idea";
+}
+
+.todo-emoji[data-status="planning"] {
+    --tip: "Planning";
+}
+
+.todo-emoji[data-status="in-progress"] {
+    --tip: "In progress";
+}
+
+.todo-emoji[data-status="blocked"] {
+    --tip: "Blocked";
+}
+
+.todo-emoji[data-status="completed"] {
+    --tip: "Completed";
+}
+
+.todo-emoji[data-status="cancelled"] {
+    --tip: "Cancelled";
+}
+
+.todo-emoji[data-status="priority"] {
+    --tip: "Priority";
+}
+
+.todo-emoji[data-status="research"] {
+    --tip: "Research required";
+}
+
+.todo-emoji[data-status="design"] {
+    --tip: "Design required";
+}
+
+.todo-emoji[data-status="coding"] {
+    --tip: "Coding required";
+}
+
+.todo-emoji[data-status="time"] {
+    --tip: "Will take a while";
+}
+
+/* Tooltip text uses CSS variable */
+.todo-emoji::after {
+    content: var(--tip);
+}
+
+/* Emoji rendering */
+.todo-emoji[data-status="new"]::before {
+    content: "💡";
+}
+
+.todo-emoji[data-status="planning"]::before {
+    content: "🤔";
+}
+
+.todo-emoji[data-status="in-progress"]::before {
+    content: "🚧";
+}
+
+.todo-emoji[data-status="blocked"]::before {
+    content: "⏸️";
+}
+
+.todo-emoji[data-status="completed"]::before {
+    content: "✔️";
+}
+
+.todo-emoji[data-status="cancelled"]::before {
+    content: "❌";
+}
+
+.todo-emoji[data-status="priority"]::before {
+    content: "⭐";
+}
+
+.todo-emoji[data-status="research"]::before {
+    content: "🧠";
+}
+
+.todo-emoji[data-status="design"]::before {
+    content: "🎨";
+}
+
+.todo-emoji[data-status="coding"]::before {
+    content: "🛠️";
+}
+
+.todo-emoji[data-status="time"]::before {
+    content: "🧭";
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs - Main Navigation
+// ###########################################################################
+.main-nav-wrapper {
+    background: $ci-4;
+    border-bottom: 2px solid $ci-4;
+}
+
+.main-nav {
+    padding: 0rem 0;
+}
+
+.main-nav-left,
+.main-nav-right {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav-left {
+    float: left;
+}
+
+.main-nav-right {
+    float: right;
+}
+
+.nav-item {
+    display: inline-block;
+    position: relative;
+    margin-right: 1rem;
+}
+
+.nav-item>a {
+    color: $white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+}
+
+.nav-item.active>a {
+    border-bottom: 2px solid $ci-2;
+}
+
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: $ci-1;
+    padding: 0.3rem 0;
+    list-style: none;
+    min-width: 180px;
+    z-index: 50;
+}
+
+.nav-dropdown-item a {
+    display: block;
+    padding: 0.3rem 0.75rem;
+    color: $white;
+    text-decoration: none;
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+
+
+// ###########################################################################
+// ATLUTD VIPs - Main Navigation
+// ###########################################################################
+
+/* ATLUTD VIPs universal "More" button */
+.vip-button-more {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    background: #A50034;
+    /* ATLUTD red */
+    color: $white !important;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: background 0.2s ease-in-out, transform 0.15s;
+}
+
+/* Hover and focus */
+.vip-button-more:hover,
+.vip-button-more:focus {
+    background: $Quote_Block;
+    /* darker ATLUTD red */
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* Optional small version for tight areas */
+.vip-button-more.small {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+}
+
+/* Gold Outline Button Variant */
+.vip-button-more.gold {
+    background: transparent;
+    border: 2px solid #C6A664;
+    color: #C6A664 !important;
+}
+
+.vip-button-more.gold:hover,
+.vip-button-more.gold:focus {
+    background: #C6A664;
+    color: #000 !important;
+    /* high contrast text */
+    transform: translateY(-2px);
+}
+
+.vip-button-icon {
+    margin-left: 0.4em;
+}
+
+// ###########################################################################
+// ATLUTD VIPs - Header Social icons
+// ###########################################################################
+
+/* Social icons strip over the banner – bottom */
+.masthead-social-list {
+    position: absolute;
+    bottom: 2px;
+    /* distance from bottom of banner */
+    display: flex;
+    gap: 0.6rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+    /* above the banner image */
+}
+
+/* Left & right variants */
+.masthead-social-list--left {
+    left: 20px;
+    right: auto;
+    justify-content: flex-start;
+}
+
+.masthead-social-list--right {
+    right: 20px;
+    left: auto;
+    justify-content: flex-end;
+}
+
+.masthead-social-item {
+    margin: 0;
+    padding: 0;
+}
+
+.masthead-social-link {
+    display: inline-block;
+}
+
+.masthead-social-icon {
+    height: 20px;
+    /* tweak size as needed */
+    width: auto;
+    display: block;
+    opacity: 0.9;
+}
+
+.masthead-social-link:hover .masthead-social-icon,
+.masthead-social-link:focus .masthead-social-icon {
+    opacity: 1;
+}
+
+// ###########################################################################
+// ATLUTD VIPs - About page, Affiliations
+// ###########################################################################
+
+/* Each affiliation row */
+.affiliation-item {
+    display: flex;
+    align-items: center;
+    /* logo + text aligned */
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* Fixed-size logo box so all rows line up */
+.affiliation-logo-frame {
+    flex: 0 0 120px;
+    /* column width */
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Link around logo: no decoration */
+.affiliation-logo-link,
+.affiliation-logo-link:hover,
+.affiliation-logo-link:focus,
+.affiliation-logo-link:active {
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Kill theme borders/underlines on images */
+.affiliation-logo-link img,
+.affiliation-logo {
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+/* Actual logo: fit inside the 120x120 box, keep aspect ratio */
+.affiliation-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+/* Text block to the right */
+.affiliation-text {
+    flex: 1 1 auto;
+    margin: 0;
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* Links inside the text block */
+.affiliation-text a {
+    color: $ci-3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.affiliation-text a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .affiliation-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .affiliation-logo-frame {
+        margin-bottom: 0.75rem;
+    }
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs - Timeline
+// ###########################################################################
+
+.timeline-horizontal {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px 0;
+    border-top: 3px solid #b3933b;
+    border-bottom: 3px solid #b3933b;
+    scrollbar-width: thin;
+}
+
+.timeline-horizontal::-webkit-scrollbar {
+    height: 6px;
+}
+
+.timeline-horizontal::-webkit-scrollbar-thumb {
+    background: #b3933b;
+}
+
+.timeline-item {
+    text-align: center;
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: #221f1f;
+    border: 3px solid #b3933b;
+    border-radius: 50%;
+}
+
+.timeline-year {
+    font-weight: bold;
+    color: #b3933b;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.timeline-label {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+// ###########################################################################
+// ATLUTD VIPs - Player Image/Text Block
+// ###########################################################################
+
+.player-block {
+    margin: 30px 0;
+}
+
+.player-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    /* top-align image + stats */
+}
+
+.player-image {
+    flex: 1 1 200px;
+    max-width: 45%;
+}
+
+.player-stats {
+    flex: 1 1 200px;
+    max-width: 45%;
+}
+
+.player-stats h3 {
+    margin-top: 0;
+}
+
+.player-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.player-text {
+    margin-top: 0;
+    margin-bottom: 40px;
+    max-width: 100%;
+}
+
+@media (max-width: 800px) {
+
+    .player-image,
+    .player-stats {
+        max-width: 100%;
+    }
+}
