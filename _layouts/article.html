@@ -1,0 +1,23 @@
+---
+layout: default
+format: articles-index
+# Don't index these pages dear Google.
+noindex: true
+---
+<div class="row">
+
+	{% include section-heading.html title=site.data.language.articles_latest %}
+
+	<div class="medium-12 columns">
+		{% include _pagination.html %}
+	</div><!-- /.medium-7.columns -->
+
+
+	<!--
+	<div class="medium-4 columns t30">
+		{% include _sidebar.html %}
+	</div>
+	-->
+	<!-- /.medium-5.columns -->
+
+</div><!-- /.row -->
