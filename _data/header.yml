@@ -1,0 +1,59 @@
+
+Bottom_Left:
+  items:
+    - text: "Twitter / X"
+      url:  "https://x.com/ATL_NWSL_VIPs"
+      icon: "icons8-twitter-96.png"
+      note: ""
+
+    - text: "Bluesky"
+      url:  "https://bsky.app/profile/atlnwslvips.bsky.social"
+      icon: "icons8-bluesky-96.png"
+      note: ""
+
+    #- text: "Instagram"
+    #  url:  "https://instagram.com/Atlanta_United_VIPs"
+    #  icon: "icons8-instagram-48.png"
+    #  note: ""
+
+
+Bottom_Right:
+  items:
+
+    - text: "LinkTree"
+      url:  "https://linktr.ee/ATL.NWSL.VIPs"
+      icon: "icons8-linktree-96.png"
+      note: ""
+
+    - text: "GitHub"
+      url:  "https://github.com/ATLnwslVIPs"
+      icon: "icons8-github-96.png"
+      note: ""
+
+    #- text: "LinkedIn"
+    #  url:  "https://www.linkedin.com/company/89902786"
+    #  icon: "icons8-linkedin-96.png"
+    #  note: ""
+
+    #- text: "Medium"
+    #  url:  "https://medium.com/@atlutd.vips"
+    #  icon: "icons8-medium-64.png"
+    #  note: ""
+
+    - text: "Email"
+      url:  "mailto:ATL.NWSL.VIPs@gmail.com"
+      icon: "icons8-email-96.png"
+      note: ""
+
+
+special_headers:
+  # 4th of July
+  - date: "0704"
+    dir: "/images/headers/0704/"
+
+  # Christmas
+  - date: "1224"
+    dir: "/images/headers/1225/"
+
+  - date: "1225"
+    dir: "/images/headers/1225/"

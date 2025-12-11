@@ -1,0 +1,41 @@
+# Author details
+#
+# 1. Edit information below
+# 2. Change site author in config.yml
+# 3. Change default post/page authors in config.yml
+#
+# Resource › http://blog.sorryapp.com/blogging-with-jekyll/2014/02/06/adding-authors-to-your-jekyll-site.html
+
+ATL_NWSL_VIPs: # replace this with your info
+  name:      "ATL NWSL VIPs"
+  siterole:  "Independent Atlanta NWSL Coverage.  Atlanta NWSL news, history, and more"
+  uri:       "https://ATLnwslVIPs.com"
+  email:     "ATL.NWSL.VIPs@gmail.com"
+  twitter:   "https://x.com/ATL.NWSL.VIPs"
+  bluesky:   "https://bsky.app/profile/atlnwslvips.bsky.social"
+  linktree:  "https://linktr.ee/ATL.NWSL.VIPs"
+  #medium:    ""
+  #linkedin:  ""
+  #github:    ""
+  #instagram: ""
+  image:      "ATL NWSL VIPs.png"
+
+
+ATLUTD_VIPs: 
+  name:      "ATLUTD VIPs"
+  siterole:  "Independent ATLUTD Coverage.  Highlighting the moments, the players, and the people behind Atlanta United"
+  uri:       "https://ATLUTDVIPs.com"
+  email:     " ATLUTD_VIPs@gmail.com"
+  twitter:   "https://x.com/ATLUTD_VIPs"
+  bluesky:   "https://bsky.app/profile/atlutdvips.bsky.social"
+  linktree:  "https://linktr.ee/atlutd_vips"
+  medium:    "https://medium.com/@atlutd.vips"
+  linkedin:  "https://www.linkedin.com/company/89902786"
+  github:    "https://github.com/ATLUTDVIPs"
+  instagram: "https://instagram.com/Atlanta_United_VIPs"
+  image:     "ATLUTD_VIPs_1024.png"
+# you can add more authors here
+
+
+
+

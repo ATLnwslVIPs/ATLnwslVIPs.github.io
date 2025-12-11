@@ -1,0 +1,13 @@
+- id: "ATLUTDVIPs"
+  name: "ATLUTD VIPs"
+  url: "https://ATLUTDVIPs.com"
+  logo: "images/authors/ATLUTD_VIPs_1024.png"   # relative to site.baseurl
+  role: "Sibling site"
+  description: "Sibling site dedicated to Atlanta''s MLS club - covering team news, history, and league developments."
+
+- id: "atlutd_fantv"
+  name: "ATLUTD Fan TV"
+  url: "https://www.youtube.com/@ATLUTDFanTV"
+  logo: "assets/icons/ATLUTD_FanTV.jpg"
+  role: "Digital Content Creator"
+  description: "I work regularly with ATLUTD Fan TV, contributing statistics, historical context, and match insights to support their live shows and fan media coverage."
