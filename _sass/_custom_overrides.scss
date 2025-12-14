@@ -1312,3 +1312,378 @@ table tr:nth-child(odd) td {
         max-width: 100%;
     }
 }
+
+// ###########################################################################
+// ATLUTD VIPs - Timeline (Vertical)
+// ###########################################################################
+
+.timeline {
+    position: relative;
+    margin: 2rem auto;
+    padding-left: 2.5rem;
+    /* space for the vertical line + dots */
+    border-left: 2px solid #ccc;
+    max-width: 960px;
+    /* keep content from stretching too wide */
+}
+
+.timeline-year-block {
+    margin-bottom: 2.5rem;
+}
+
+.timeline-year-heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: $ci-3;
+    position: sticky;
+    top: 0.5rem;
+    /* adjust if it collides with site header */
+    background: $white;
+    z-index: 2;
+    padding-top: 0.25rem;
+}
+
+/* separator between years that shows your standard --- text */
+.timeline-year-separator {
+    text-align: center;
+    margin: 0.5rem 0 1.75rem;
+    color: #bbb;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin: 2rem 0;
+}
+
+/* Base dot – overridden only by category color, no size changes */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -0.55rem;
+    top: 0.4rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background: #fff;
+}
+
+/* Category colors: Person = blue, Team = green, Game = ATL red */
+.timeline-item-person::before {
+    border-color: #0066cc;
+    background: #0066cc;
+}
+
+.timeline-item-team::before {
+    border-color: #007a33;
+    background: #007a33;
+}
+
+.timeline-item-game::before {
+    border-color: $ci-1;
+    /* ATL red */
+    background: $ci-1;
+}
+
+/* Importance – keep only a subtle color accent for 5s, no size changes */
+.timeline-item.importance-5 .timeline-title {
+    color: $ci-1;
+}
+
+/* Layout for the text block */
+.timeline-content {
+    max-width: 720px;
+    margin: 0 auto;
+    /* center the block in the page */
+    text-align: center;
+    /* center date/title/subtitle etc. */
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 0.15rem;
+}
+
+.timeline-title {
+    margin: 0;
+    font-size: 1.0rem;
+    font-weight: 700;
+}
+
+.timeline-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.timeline-title a:hover {
+    color: $ci-1;
+    border-bottom-color: rgba(0, 0, 0, 0.35);
+}
+
+.timeline-subtitle {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.timeline-details {
+    margin: 0.5rem 0 0;
+    line-height: 1.5;
+}
+
+/* Filter buttons */
+.timeline-filters {
+    margin: 1rem 0 1.5rem;
+    text-align: center;
+}
+
+.timeline-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.18rem 0.65rem;
+    /* smaller, closer to chips */
+    margin: 0 0.25rem;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    background: #ffffff;
+    font-size: 0.78rem;
+    /* slightly smaller text */
+    font-weight: 600;
+    color: #444;
+    cursor: pointer;
+    line-height: 1.4;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.timeline-filter-button.active {
+    border-color: $ci-1;
+    background: $ci-1;
+    color: #fff;
+}
+
+/* All button – neutral, no cat color */
+.timeline-filter-button[data-timeline-filter="all"] {
+    border-color: #333;
+    color: #333;
+}
+
+.timeline-filter-button[data-timeline-filter="all"].active {
+    background: #221f1f;
+    border-color: #221f1f;
+    color: #fff;
+}
+
+/* Category-driven buttons: use CSS variable injected from YAML */
+.timeline-filter-button:not([data-timeline-filter="all"]) {
+    border-color: var(--timeline-cat-color, #888);
+    color: var(--timeline-cat-color, #444);
+}
+
+.timeline-filter-button:not([data-timeline-filter="all"]).active {
+    background: var(--timeline-cat-color, #221f1f);
+    border-color: var(--timeline-cat-color, #221f1f);
+    color: #fff;
+}
+
+.timeline-filter-button:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Chips – base */
+.timeline-chip {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 0.12rem 0.6rem;
+    margin-right: 0.25rem;
+    border-radius: 999px;
+    background: #eee;
+    line-height: 1.4;
+}
+
+/* Category chips use color from YAML via CSS variable */
+.timeline-chip-category {
+    background: var(--timeline-cat-color, #444);
+    color: #fff;
+}
+
+.timeline-chip-icon {
+    margin-right: 0.25rem;
+}
+
+.timeline-chip-type-match {
+    background: $ci-1;
+    color: #fff;
+}
+
+.timeline-chip-type-event {
+    background: #555;
+    color: #fff;
+}
+
+
+/* Images: centered, full image visible, hover zoom */
+.timeline-images {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* center the whole row horizontally */
+    align-items: flex-end;
+    /* align bottoms of all images */
+    gap: 0.75rem;
+}
+
+.timeline-image-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    /* keep image sitting on the bottom */
+}
+
+/* All images get the same height, width scales with aspect ratio */
+.timeline-image {
+    height: 200px;
+    /* tweak this number to taste (120–160px) */
+    width: auto;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.timeline-image-wrapper:hover .timeline-image {
+    transform: scale(1.03);
+}
+
+/* Search + year controls */
+.timeline-controls {
+    margin: 1rem 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.timeline-search-input {
+    padding: 0.35rem 0.6rem;
+    min-width: 220px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+.timeline-year-select {
+    padding: 0.35rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+
+// ###########################################################################
+// ATLUTD VIPs - On This Date
+// ###########################################################################
+
+.on-this-date-card {
+    background: $white;
+    border: 1px solid $grey-2;
+    padding: 1.25rem 1.25rem 1.1rem;
+    border-radius: 4px;
+    border-top: 3px solid $ci-5;
+}
+
+.on-this-date-title {
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.2;
+}
+
+.on-this-date-summary {
+    font-size: 1.05rem;
+    line-height: 1.55;
+}
+
+.on-this-date-muted {
+    font-size: 0.9rem;
+    color: $grey-8;
+    margin: 0;
+}
+
+.on-this-date-matchline {
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+
+/* Stats table - scoped so it doesn't affect your normal tables */
+table.on-this-date-stats-table {
+    width: 100%;
+    margin: 0.75rem 0 0;
+    border-collapse: collapse;
+    border: 1px solid $grey-2;
+}
+
+table.on-this-date-stats-table th {
+    width: 170px;
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid $grey-2;
+    background-color: transparentize($ci-3, 0.85);
+    color: $ci-1;
+    text-transform: none;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+table.on-this-date-stats-table td {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid $grey-2;
+    font-size: 0.95rem;
+}
+
+/* Images row */
+.on-this-date-image-row {
+    display: flex;
+    justify-content: center;
+    /* center the whole row horizontally */
+    align-items: flex-end;
+    /* align bottoms of all images */
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    /* still wraps on small screens */
+    margin-top: 0.9rem;
+}
+
+.on-this-date-thumb {
+    max-height: 200px;
+    /* your “max height” */
+    height: auto;
+    width: auto;
+    /* keep aspect ratio */
+    object-fit: contain;
+    /* SHOW FULL IMAGE */
+    border-radius: 12px;
+    display: block;
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Small screens: drop to 2 per row */
+@media (max-width: 768px) {
+    .on-this-date-thumb {
+        width: calc(50% - 0.75rem);
+        max-width: 260px;
+        max-height: 180px;
+    }
+}
+
+/* Very small screens: 1 per row */
+@media (max-width: 420px) {
+    .on-this-date-thumb {
+        width: 100%;
+        max-width: 320px;
+        max-height: 220px;
+    }
+}

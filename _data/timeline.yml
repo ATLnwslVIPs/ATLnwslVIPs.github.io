@@ -1,0 +1,65 @@
+
+# -------------------------------------------------------------------------
+# Timeline filter definitions (drive buttons, colors, icons)
+# -------------------------------------------------------------------------
+filters:
+  - key: person
+    label: "People"
+    icon: "👤"
+    color: "#0066cc"
+
+  - key: team
+    label: "Team"
+    icon: "🏟️"
+    color: "#007a33"
+
+  - key: game
+    label: "Games"
+    icon: "⚽"
+    color: "#A50034"
+
+  - key: kit
+    label: "Kit"
+    icon: "👕"
+    color: "#0066cc"
+
+  - key: atlanta
+    label: "Atlanta"
+    icon: "🅰️"
+    color: "#9D2235"
+
+  # Example of adding a new category later:
+  # - key: trophy
+  #   label: "Trophies"
+  #   icon: "🏆"
+  #   color: "#c99a3b"
+
+
+
+# importance scale:
+#   1 = minor event (background info, low visibility)
+#   2 = standard event (default)
+#   3 = notable event
+#   4 = major event
+#   5 = historic event (display prominently)
+
+# -------------------------------------------------------------------------
+# Timeline events
+# -------------------------------------------------------------------------
+events:
+
+  - date: 2025-11-12
+    category: Atlanta
+    title: "Atlanta Awarded an NWSL franchise"
+    subtitle: ""
+    details: ""
+    tags: ["ATLUTD", "NWSL", "Atlanta"]
+    url: 
+    importance: 5   # 1–5 scale
+    image_dir: "/images/timeline/2025-11-12 - NWSL team"
+    images:
+      - "G5j9BdgWkAAhgDr.jpg"
+      - "G6iRRy3WsAA4DSV.jpg"
+      - "G5kJNsNXYAAugI_.jpg"
+      - "G5kJNsNXsAAdtKr.jpg"
+      - "G5kJNsLXIAAZ2OY.jpg"
