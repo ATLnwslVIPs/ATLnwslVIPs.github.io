@@ -1,0 +1,63 @@
+---
+layout: default
+format: post
+---
+
+<div class="row t30">
+
+	{% if page.image.title %}
+	<figure class="article-hero">
+		<img src="{{ site.urlimg }}{{ page.image.title }}" width="970" alt="{{ page.title | escape_once }}"
+			itemprop="image">
+	
+		{% if page.image.caption_url and page.image.caption %}
+		<figcaption class="text-right">
+			<a href="{{ page.image.caption_url }}">{{ page.image.caption }}</a>
+		</figcaption>
+		{% elsif page.image.caption %}
+		<figcaption class="text-right">
+			{{ page.image.caption }}
+		</figcaption>
+		{% endif %}
+	</figure>
+	{% endif %}
+
+	<div class="
+		{% if page.sidebar == NULL %}
+			medium-12 columns
+		{% else %}
+			medium-9 columns
+		{% endif %}
+		{% if page.sidebar == "left" %} medium-push-3 {% endif %} ">
+		
+		<article itemscope itemtype="http://schema.org/Article">
+
+			<div itemprop="articleSection">
+			{{ content }}
+			</div>
+
+			{% if page.show_meta == true %}
+				{% include _meta_information.html %}
+			{% endif %}
+
+			{% if page.comments == true %}
+				{% include _comments.html %}
+			{% endif %}
+		</article>
+	</div><!-- /.medium-8.columns -->
+
+
+	{% if page.sidebar == "left" %}
+	<div class="medium-3 columns medium-pull-9">
+
+		{% include _sidebar.html %}
+	</div><!-- /.medium-4.columns -->
+	{% endif %}
+
+
+	{% if page.sidebar == "right" %}
+	<div class="medium-3 columns">
+		{% include _sidebar.html %}
+	</div><!-- /.medium-4.columns -->
+	{% endif %}
+</div><!-- /.row -->
