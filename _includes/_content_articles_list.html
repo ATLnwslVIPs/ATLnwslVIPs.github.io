@@ -1,0 +1,93 @@
+{% assign items = site.content_articles | sort: "date" | reverse %}
+
+{% for post in items %}
+    <div class="row t30 b30 homepage">
+        <div class="small-12 columns">
+            <article class="home-card{% if post.published == false %} home-card-draft{% endif %}">
+
+                <div class="row">
+                    {% comment %}{# Thumbnail column #}{% endcomment %}
+                    <div class="small-12 medium-4 columns">
+                        {% if post.image.thumb %}
+                        <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
+                            <img src="{{ site.urlimg }}{{ post.image.thumb }}" alt="{{ post.title | escape_once }}"
+                                class="home-card-thumb">
+                        </a>
+                        {% elsif post.image.homepage %}
+                        <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
+                            <img src="{{ site.urlimg }}{{ post.image.homepage }}" alt="{{ post.title | escape_once }}"
+                                class="home-card-thumb">
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    {% comment %}{# Text column #}{% endcomment %}
+                    <div class="small-12 medium-8 columns">
+                        <div class="categories">
+                            {% include _categories.html item=post %}
+                        </div>
+                        {% if post.published == false %}
+                            <div class="home-card-draft-badge">DRAFT</div>
+                        {% endif %}
+                        <h4 class="home-card-title">
+                            <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
+                                {{ post.title }}
+                            </a>
+                        </h4>
+
+                        <div class="home-card-meta">
+                            {% if post.author %}
+                            <span class="home-card-author">{{ post.author }}</span>
+                            {% endif %}
+                            <span class="home-card-separator">·</span>
+                            <span class="home-card-date">
+                                {{ post.date | date: "%b %-d, %Y" }}
+                            </span>
+                            <span class="home-card-separator">·</span>
+                            {% assign words = post.content | strip_html | number_of_words %}
+                            {% assign mins = words | divided_by: 225 | at_least: 1 %}
+                            <span class="home-card-reading-time">
+                                {{ mins }} min read
+                            </span>
+                        </div>
+
+                        <p class="home-card-excerpt">
+                            {%- assign excerpt = "" -%}
+                            {%- assign total_words = 40 -%}
+                            {%- assign body_text = post.content | strip_html | strip_newlines -%}
+
+                            {%- if post.meta_description -%}
+                                {{ post.meta_description | strip_html | escape }}
+                                <br />
+                            {%- endif -%}
+
+                            {%- if post.teaser -%}
+                                {%- assign excerpt = post.teaser -%}
+                                {%- assign teaser_words = post.teaser | strip_html | number_of_words -%}
+                                {%- assign extra_words = total_words | minus: teaser_words -%}
+                                {%- if extra_words > 0 -%}
+                                    {%- assign body_excerpt = body_text | split: " " | slice: teaser_words, extra_words | join: " " -%}
+                                    {%- assign excerpt = excerpt | append: " " | append: body_excerpt -%}
+                                {%- endif -%}
+                            {%- else -%}
+                                {%- assign excerpt = body_text | split: " " | slice: 0, total_words | join: " " -%}
+                            {%- endif -%}
+
+                            {{ excerpt | strip_html | escape }}…
+                        </p>
+
+                        <p class="home-card-readmore">
+                            <a class="home-card-readmore-link" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                                title="Read {{ post.title | escape_once }}">
+                                {{ site.data.language.read_more | default: "Read More" }} &#8250;
+                            </a>
+                        </p>
+                    </div>
+                </div><!-- /.row -->
+
+            </article><!-- /.home-card -->
+
+        </div><!-- /.small-12.columns -->
+
+    </div><!-- /.row -->
+{% endfor %}
