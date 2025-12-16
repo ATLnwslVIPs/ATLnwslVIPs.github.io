@@ -1,9 +1,21 @@
 ---
-layout: page
-title: "Atlanta NWSL Timeline"
+layout: page_no_header
+title: "ATLUTD Timeline"
 subheadline: "Key moments in club history, players, and culture"
 permalink: "/timeline/"
+image_dir: ""
+image:
+    title: Evolution_Soccer.jpg
+    thumb: Evolution_Soccer.jpg
+    homepage: Evolution_Soccer.jpg
+    caption: ""
+
 ---
+
+  {% include section-heading.html
+    title=site.data.language.timeline_title
+    subtitle=site.data.language.timeline_subheading
+  %}
 
 {% assign timeline_data = site.data.timeline %}
 {% assign filters      = timeline_data.filters %}
