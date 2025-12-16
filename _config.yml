@@ -66,8 +66,8 @@ header:
 #   /_/    \__,_/\__, /_/_/ /_/\__,_/\__/_/\____/_/ /_/
 #               /____/
 #
-paginate: 5                      # Paginates all X entries
-paginate_path: "articles/page:num"   # Pagination path › Important for articles page in /articles/ to work
+#paginate: 5                      # Paginates all X entries
+#paginate_path: "articles/page:num"   # Pagination path › Important for articles page in /articles/ to work
 
 
 # Theme works best with Kramdown (using the table of contents function)
@@ -106,6 +106,18 @@ compress_html:
     envs: [development]
 
 
+# -------------------------------------------------------------------
+# Content Types
+# -------------------------------------------------------------------
+collections:
+  content_articles:
+    output: true
+    permalink: /:year/:month/:day/:name/
+
+  content_match_days:
+    output: true
+    permalink: /:year/:month/:day/:name/
+
 #
 #       ____       ____            ____
 #      / __ \___  / __/___ ___  __/ / /_
@@ -134,9 +146,27 @@ defaults:
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
       comments: false
       author: ATL_NWSL_VIPs    # Default author for posts
-      permalink: /:year/:month/:day/:title/
+      #permalink: /:year/:month/:day/:title/
 
+  -
+    scope:
+      path: ''
+      type: 'content_articles'
+    values:
+      layout: article
+      show_meta: true
+      comments: false
+      author: ATL_NWSL_VIPs
 
+  -
+    scope:
+      path: ''
+      type: 'content_match_days'
+    values:
+      layout: match_day
+      show_meta: true
+      comments: false
+      author: ATL_NWSL_VIPs
 
 #       _   __            _             __  _
 #      / | / /___ __   __(_)___ _____ _/ /_(_)___  ____
