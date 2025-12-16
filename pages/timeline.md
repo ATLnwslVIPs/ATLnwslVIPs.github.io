@@ -1,6 +1,6 @@
 ---
 layout: page_no_header
-title: "ATLUTD Timeline"
+title: "Atlanta NWSL Timeline"
 subheadline: "Key moments in club history, players, and culture"
 permalink: "/timeline/"
 image_dir: ""
