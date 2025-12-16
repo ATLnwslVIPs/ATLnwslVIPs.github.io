@@ -54,22 +54,31 @@ format: frontpage
 
 
 
-
 {% comment %}
-     Display Articles
+     Display Articles (Collections)
+     - In development: include drafts (published:false)
+     - In production: only show published content
 {% endcomment %}
 
-{% unless site.posts == empty %}
+{%- assign All_Articles = site.content_articles | sort: "date" | reverse -%}
+
+{%- if jekyll.environment == "production" -%}
+    {%- assign Latest_Articles = All_Articles | where_exp: "item", "item.published != false" -%}
+{%- else -%}
+    {%- assign Latest_Articles = All_Articles -%}
+{%- endif -%}
+
+{% unless Latest_Articles == empty %}
 
 {% include section-heading.html title=site.data.language.articles_latest %}
 
-{% for post in site.posts limit:7 %}
+{% for post in Latest_Articles limit:7 %}
     <div class="row t30 b30 homepage">
         <div class="small-12 columns">
-            <article class="home-card">
+            <article class="home-card{% if post.published == false %} home-card-draft{% endif %}">
 
                 <div class="row">
-                    {% comment %}{# Thumbnail column #}{% endcomment %}
+                    <!-- Thumbnail column -->
                     <div class="small-12 medium-4 columns">
                         {% if post.image.thumb %}
                         <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
@@ -84,11 +93,14 @@ format: frontpage
                         {% endif %}
                     </div>
 
-                    {% comment %}{# Text column #}{% endcomment %}
+                    <!-- Text column -->
                     <div class="small-12 medium-8 columns">
                         <div class="categories">
                             {% include _categories.html item=post %}
                         </div>
+                        {% if post.published == false %}
+                            <div class="home-card-draft-badge">DRAFT</div>
+                        {% endif %}
 
                         <h4 class="home-card-title">
                             <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
@@ -110,20 +122,18 @@ format: frontpage
                             <span class="home-card-reading-time">
                                 {{ mins }} min read
                             </span>
-
                         </div>
-
 
                         <p class="home-card-excerpt">
                             {%- assign excerpt = "" -%}
                             {%- assign total_words = 40 -%}
                             {%- assign body_text = post.content | strip_html | strip_newlines -%}
-                        
+
                             {%- if post.meta_description -%}
                                 {{ post.meta_description | strip_html | escape }}
                                 <br />
                             {%- endif -%}
-                        
+
                             {%- if post.teaser -%}
                                 {%- assign excerpt = post.teaser -%}
                                 {%- assign teaser_words = post.teaser | strip_html | number_of_words -%}
@@ -135,7 +145,7 @@ format: frontpage
                             {%- else -%}
                                 {%- assign excerpt = body_text | split: " " | slice: 0, total_words | join: " " -%}
                             {%- endif -%}
-                        
+
                             {{ excerpt | strip_html | escape }}…
                         </p>
 
@@ -149,20 +159,9 @@ format: frontpage
                 </div><!-- /.row -->
 
             </article><!-- /.home-card -->
-            
+
         </div><!-- /.small-12.columns -->
-        
     </div><!-- /.row -->
-    {% endfor %}
-    
+{% endfor %}
+
 {% endunless %}
-
-
-{% comment %}
-    Finally, if there is content, spit it out.
-{% endcomment %}
-
-<div class="row">
-    {% include button_more.html url="/articles/" text=site.data.language.articles_all icon="arrow" class="vip-button-more gold" %}
-    {{ content }}
-</div><!-- /.row -->
