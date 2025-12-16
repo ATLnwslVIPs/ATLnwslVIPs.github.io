@@ -44,3 +44,12 @@ authors: "The Authors"
 
 todo:      "To Do"
 todo_list: "To Do List"
+
+match_day_list: "Match Day Coverage"
+match_day_list_subheading: "Matchday notes and post-game analysis"
+
+articles_list: "Long-form Articles"
+articles_list_subheading: "In-depth coverage, historical pieces, and analysis for lovers of soccer"
+
+timeline_title: "Timeline"
+timeline_subheading: "Key moments in club history, players, and culture"
