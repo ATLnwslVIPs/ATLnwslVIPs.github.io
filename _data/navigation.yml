@@ -7,12 +7,13 @@
   side: left
   dynamic: "authors"     # special marker – nav code will build dropdown from authors.yml
 
-- title: Articles
+#- title: Match Day Coverage
+#  url: "/match_day/"
+#  side: left
+
+- title: In-depth Articles
   url: "/articles/"
   side: left
-  children:
-    - title: "Archive"
-      url: "/articles/archive/"
 
 #- title: Profiles
 #  url: "/profiles/"
