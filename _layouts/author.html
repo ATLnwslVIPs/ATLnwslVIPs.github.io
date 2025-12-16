@@ -3,7 +3,14 @@ layout: default
 ---
 
 {%- assign author = site.data.authors[page.author_id] -%}
-{%- assign posts = site.posts | where: "author", page.author_id -%}
+
+{%- assign author_articles = site.content_articles | where: "author", page.author_id -%}
+{%- assign author_match_days = site.content_match_days | where: "author", page.author_id -%}
+{%- assign items = author_articles | concat: author_match_days | sort: "date" | reverse -%}
+
+{%- if jekyll.environment == "production" -%}
+    {%- assign items = items | where_exp: "item", "item.published != false" -%}
+{%- endif -%}
 
 <div class="row t30">
     <!-- Left: author profile card -->
@@ -62,21 +69,21 @@ layout: default
         </aside>
     </div>
 
-    <!-- Right: articles list in frontpage style -->
+    <!-- Right: items list in frontpage style -->
     <div class="medium-9 columns">
-        {% if posts == empty %}
-            <p>No articles found for this author yet.</p>
+        {% if items == empty %}
+            <p>No posts found for this author yet.</p>
         {% else %}
 
         {% capture author_heading %}
-            Latest Articles by {{ author.name }}
+            Latest Posts by {{ author.name }}
         {% endcapture %}
         {% include section-heading.html title=author_heading %}
 
-        {% for post in posts %}
+        {% for post in items %}
         <div class="row t30 b30 homepage">
             <div class="small-12 columns">
-                <article class="home-card">
+                <article class="home-card{% if post.published == false %} home-card-draft{% endif %}">
                     <div class="row">
 
                         <!-- Thumbnail column -->
@@ -99,7 +106,9 @@ layout: default
                             <div class="categories">
                                 {% include _categories.html item=post %}
                             </div>
-
+                            {% if post.published == false %}
+                                <div class="home-card-draft-badge">DRAFT</div>
+                            {% endif %}
                             <h4 class="home-card-title">
                                 <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
                                     {{ post.title }}
@@ -137,8 +146,7 @@ layout: default
                                 {%- assign teaser_words = post.teaser | strip_html | number_of_words -%}
                                 {%- assign extra_words = total_words | minus: teaser_words -%}
                                 {%- if extra_words > 0 -%}
-                                {%- assign body_excerpt = body_text | split: " " | slice: teaser_words, extra_words |
-                                join: " " -%}
+                                {%- assign body_excerpt = body_text | split: " " | slice: teaser_words, extra_words | join: " " -%}
                                 {%- assign excerpt = excerpt | append: " " | append: body_excerpt -%}
                                 {%- endif -%}
                                 {%- else -%}
