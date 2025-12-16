@@ -13,10 +13,24 @@ permalink: /authors/
             {% for pair in site.data.authors %}
             {%- assign author_id = pair[0] -%}
             {%- assign author = pair[1] -%}
-            {%- assign posts = site.posts | where: "author", author_id -%}
+
+            {%- assign author_articles_all = site.content_articles | where: "author", author_id -%}
+            {%- assign author_match_days_all = site.content_match_days | where: "author", author_id -%}
+
+            {%- assign author_articles_published = author_articles_all | where_exp: "item", "item.published != false" -%}
+            {%- assign author_match_days_published = author_match_days_all | where_exp: "item", "item.published != false" -%}
+
+            {%- assign author_articles_drafts = author_articles_all | where: "published", false -%}
+            {%- assign author_match_days_drafts = author_match_days_all | where: "published", false -%}
+
+            {%- assign published_count = author_articles_published.size | plus: author_match_days_published.size -%}
+            {%- assign draft_count = author_articles_drafts.size | plus: author_match_days_drafts.size -%}
+            {%- assign total_count = published_count | plus: draft_count -%}
+
+
             {%- assign author_slug = author_id | slugify -%}
 
-            {%- if posts.size > 0 -%}
+            {%- if total_count > 0 -%}
             <article class="author-card">
 
                 {% if author.image %}
@@ -40,8 +54,37 @@ permalink: /authors/
                     {% endif %}
 
                     <p class="author-count">
-                        {{ posts.size }} article{% if posts.size != 1 %}s{% endif %}
+                        {{ total_count }} item{% if total_count != 1 %}s{% endif %}
+                        <span class="author-count-breakdown">
+                            ( 
+                            {%- assign parts = "" -%}
+
+                            {%- if author_articles_published.size > 0 -%}
+                                {%- assign parts = parts | append: author_articles_published.size | append: " article" -%}
+                                {%- if author_articles_published.size != 1 -%}
+                                    {%- assign parts = parts | append: "s" -%}
+                                {%- endif -%}
+                            {%- endif -%}
+
+                            {%- if author_match_days_published.size > 0 -%}
+                                {%- if parts != "" -%}
+                                    {%- assign parts = parts | append: ", " -%}
+                                {%- endif -%}
+                                {%- assign parts = parts | append: author_match_days_published.size | append: " match day" -%}
+                                {%- if author_match_days_published.size != 1 -%}
+                                    {%- assign parts = parts | append: "s" -%}
+                                {%- endif -%}
+                            {%- endif -%}
+
+                            {{ parts }}
+                            )
+                            {% if draft_count > 0 %}
+                                <br />
+                                ( {{ draft_count }} draft{% if draft_count != 1 %}s{% endif %} )
+                            {% endif %}
+                        </span>
                     </p>
+
                 </div>
 
             </article>
