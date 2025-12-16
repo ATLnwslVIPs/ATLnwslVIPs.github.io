@@ -1687,3 +1687,24 @@ table.on-this-date-stats-table td {
         max-height: 220px;
     }
 }
+
+// ###########################################################################
+// ATLUTD VIPs - Draft Articles
+// ###########################################################################
+.home-card-draft {
+    outline: 2px dashed #2ef1ff;
+    outline-offset: 4px;
+    background: rgba(24, 228, 255, 0.04);
+}
+
+.home-card-draft-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    margin: 8px 8px 8px 8px;
+    border-radius: 999px;
+    border: 2px solid #2ef1ff;
+    color: #2ef1ff;
+}
