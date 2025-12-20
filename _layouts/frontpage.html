@@ -52,116 +52,140 @@ format: frontpage
 </div><!-- /.Highlights -->
 
 
-
-
 {% comment %}
-     Display Articles (Collections)
+     Display Articles + Match Days (Collections)
      - In development: include drafts (published:false)
      - In production: only show published content
 {% endcomment %}
 
-{%- assign All_Articles = site.content_articles | sort: "date" | reverse -%}
+{%- assign All_Articles = site.content_articles -%}
+{%- assign All_Match_Days = site.content_match_days -%}
 
 {%- if jekyll.environment == "production" -%}
-    {%- assign Latest_Articles = All_Articles | where_exp: "item", "item.published != false" -%}
+    {%- assign Visible_Articles = All_Articles | where_exp: "item", "item.published != false" -%}
+    {%- assign Visible_Match_Days = All_Match_Days | where_exp: "item", "item.published != false" -%}
 {%- else -%}
-    {%- assign Latest_Articles = All_Articles -%}
+    {%- assign Visible_Articles = All_Articles -%}
+    {%- assign Visible_Match_Days = All_Match_Days -%}
 {%- endif -%}
 
-{% unless Latest_Articles == empty %}
+{%- assign Latest_Items = Visible_Articles | concat: Visible_Match_Days | sort: "date" | reverse -%}
+{%- assign Total_Item_Count = Latest_Items | size -%}
+{%- assign Frontpage_Limit = 10 -%}
 
-{% include section-heading.html title=site.data.language.articles_latest %}
+{% unless Latest_Items == empty %}
 
-{% for post in Latest_Articles limit:7 %}
-    <div class="row t30 b30 homepage">
-        <div class="small-12 columns">
-            <article class="home-card{% if post.published == false %} home-card-draft{% endif %}">
+    {% include section-heading.html title=site.data.language.articles_latest %}
 
-                <div class="row">
-                    <!-- Thumbnail column -->
-                    <div class="small-12 medium-4 columns">
-                        {% if post.image.thumb %}
-                        <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
-                            <img src="{{ site.urlimg }}{{ post.image.thumb }}" alt="{{ post.title | escape_once }}"
-                                class="home-card-thumb">
-                        </a>
-                        {% elsif post.image.homepage %}
-                        <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
-                            <img src="{{ site.urlimg }}{{ post.image.homepage }}" alt="{{ post.title | escape_once }}"
-                                class="home-card-thumb">
-                        </a>
-                        {% endif %}
-                    </div>
+    {% for post in Latest_Items limit:10 %}
+        <div class="row t30 b30 homepage">
+            <div class="small-12 columns">
+                <article class="home-card{% if post.published == false %} home-card-draft{% endif %}">
 
-                    <!-- Text column -->
-                    <div class="small-12 medium-8 columns">
-                        <div class="categories">
-                            {% include _categories.html item=post %}
-                        </div>
-                        {% if post.published == false %}
-                            <div class="home-card-draft-badge">DRAFT</div>
-                        {% endif %}
-
-                        <h4 class="home-card-title">
-                            <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
-                                {{ post.title }}
+                    <div class="row">
+                        <!-- Thumbnail column -->
+                        <div class="small-12 medium-4 columns">
+                            {% if post.image.thumb %}
+                            <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
+                                <span class="home-card-thumb-wrap">
+                                    <img src="{{ site.urlimg }}{{ post.image.thumb }}" alt="{{ post.title | escape_once }}"
+                                        class="home-card-thumb">
+                                    {% if post.published == false %}
+                                    <span class="draft-watermark-thumb">DRAFT</span>
+                                    {% endif %}
+                                </span>
                             </a>
-                        </h4>
-
-                        <div class="home-card-meta">
-                            {% if post.author %}
-                            <span class="home-card-author">{{ post.author }}</span>
+                            {% elsif post.image.homepage %}
+                            <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
+                                <span class="home-card-thumb-wrap">
+                                    <img src="{{ site.urlimg }}{{ post.image.homepage }}" alt="{{ post.title | escape_once }}"
+                                        class="home-card-thumb">
+                                    {% if post.published == false %}
+                                    <span class="draft-watermark-thumb">DRAFT</span>
+                                    {% endif %}
+                                </span>
+                            </a>
                             {% endif %}
-                            <span class="home-card-separator">·</span>
-                            <span class="home-card-date">
-                                {{ post.date | date: "%b %-d, %Y" }}
-                            </span>
-                            <span class="home-card-separator">·</span>
-                            {% assign words = post.content | strip_html | number_of_words %}
-                            {% assign mins = words | divided_by: 225 | at_least: 1 %}
-                            <span class="home-card-reading-time">
-                                {{ mins }} min read
-                            </span>
                         </div>
 
-                        <p class="home-card-excerpt">
-                            {%- assign excerpt = "" -%}
-                            {%- assign total_words = 40 -%}
-                            {%- assign body_text = post.content | strip_html | strip_newlines -%}
+                        <!-- Text column -->
+                        <div class="small-12 medium-8 columns">
+                            <div class="categories">
+                                {% include _categories.html item=post %}
+                            </div>
 
-                            {%- if post.meta_description -%}
-                                {{ post.meta_description | strip_html | escape }}
-                                <br />
-                            {%- endif -%}
+                            {% if post.published == false %}
+                                <div class="home-card-draft-badge">DRAFT</div>
+                            {% endif %}
 
-                            {%- if post.teaser -%}
-                                {%- assign excerpt = post.teaser -%}
-                                {%- assign teaser_words = post.teaser | strip_html | number_of_words -%}
-                                {%- assign extra_words = total_words | minus: teaser_words -%}
-                                {%- if extra_words > 0 -%}
-                                    {%- assign body_excerpt = body_text | split: " " | slice: teaser_words, extra_words | join: " " -%}
-                                    {%- assign excerpt = excerpt | append: " " | append: body_excerpt -%}
+                            <h4 class="home-card-title">
+                                <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
+                                    {{ post.title }}
+                                </a>
+                            </h4>
+
+                            <div class="home-card-meta">
+                                {% if post.author %}
+                                <span class="home-card-author">{{ post.author }}</span>
+                                {% endif %}
+                                <span class="home-card-separator">·</span>
+                                <span class="home-card-date">
+                                    {{ post.date | date: "%b %-d, %Y" }}
+                                </span>
+                                <span class="home-card-separator">·</span>
+                                {% assign words = post.content | strip_html | number_of_words %}
+                                {% assign mins = words | divided_by: 225 | at_least: 1 %}
+                                <span class="home-card-reading-time">
+                                    {{ mins }} min read
+                                </span>
+                            </div>
+
+                            <p class="home-card-excerpt">
+                                {%- assign excerpt = "" -%}
+                                {%- assign total_words = 40 -%}
+                                {%- assign body_text = post.content | strip_html | strip_newlines -%}
+
+                                {%- if post.meta_description -%}
+                                    {{ post.meta_description | strip_html | escape }}
+                                    <br />
                                 {%- endif -%}
-                            {%- else -%}
-                                {%- assign excerpt = body_text | split: " " | slice: 0, total_words | join: " " -%}
-                            {%- endif -%}
 
-                            {{ excerpt | strip_html | escape }}…
-                        </p>
+                                {%- if post.teaser -%}
+                                    {%- assign excerpt = post.teaser -%}
+                                    {%- assign teaser_words = post.teaser | strip_html | number_of_words -%}
+                                    {%- assign extra_words = total_words | minus: teaser_words -%}
+                                    {%- if extra_words > 0 -%}
+                                        {%- assign body_excerpt = body_text | split: " " | slice: teaser_words, extra_words | join: " " -%}
+                                        {%- assign excerpt = excerpt | append: " " | append: body_excerpt -%}
+                                    {%- endif -%}
+                                {%- else -%}
+                                    {%- assign excerpt = body_text | split: " " | slice: 0, total_words | join: " " -%}
+                                {%- endif -%}
 
-                        <p class="home-card-readmore">
-                            <a class="home-card-readmore-link" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
-                                title="Read {{ post.title | escape_once }}">
-                                Read More &#8250;
-                            </a>
-                        </p>
-                    </div>
-                </div><!-- /.row -->
+                                {{ excerpt | strip_html | escape }}…
+                            </p>
 
-            </article><!-- /.home-card -->
+                            <p class="home-card-readmore">
+                                <a class="home-card-readmore-link" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                                    title="Read {{ post.title | escape_once }}">
+                                    Read More &#8250;
+                                </a>
+                            </p>
+                        </div>
+                    </div><!-- /.row -->
 
-        </div><!-- /.small-12.columns -->
-    </div><!-- /.row -->
-{% endfor %}
+                </article><!-- /.home-card -->
+            </div><!-- /.small-12.columns -->
+        </div><!-- /.row -->
+    {% endfor %}
 
 {% endunless %}
+
+{% if Total_Item_Count > Frontpage_Limit %}
+    <div class="row t30 b30 homepage">
+        <div class="small-12 columns">
+            {% include button_more.html url="/articles/" text=site.data.language.articles_all class="vip-button-more small" %}
+        </div>
+    </div>
+
+{% endif %}
