@@ -8,7 +8,7 @@ categories:
 tags:
   - Rules
 breadcrumb: false
-author: ATL_NWSL_VIPS
+author: ATL_NWSL_VIPs
 
 image_dir: "2025-12-23-NWSL High Impact Player Rule"
 header:
