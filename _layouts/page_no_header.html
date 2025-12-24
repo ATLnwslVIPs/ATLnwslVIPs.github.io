@@ -32,8 +32,26 @@ format: post
 		
 		<article itemscope itemtype="http://schema.org/Article">
 
-			<div itemprop="articleSection">
-			{{ content }}
+			<!-- Perform site-wide formatting -->
+			{%- assign Formatting = site.data.site_wide_formatting -%}
+
+			{%- assign Bold_Terms = Formatting.bold | default: empty | join: "||" -%}
+			{%- assign Italic_Terms = Formatting.italics | default: empty | join: "||" -%}
+
+			{%- capture Replace_Rules -%}
+			{%- for Rule in Formatting.replace -%}
+			{{ Rule.from }}=>{{ Rule.to }}{%- unless forloop.last -%}||{%- endunless -%}
+			{%- endfor -%}
+			{%- endcapture -%}
+
+			<div
+				itemprop="articleSection"
+				class="articleSection js-site-wide-formatting"
+				data-bold-terms="{{ Bold_Terms | escape }}"
+				data-italic-terms="{{ Italic_Terms | escape }}"
+				data-replace-rules="{{ Replace_Rules | strip | escape }}"
+			>
+				{{ content }}
 			</div>
 
 			{% if page.show_meta == true %}
@@ -43,6 +61,8 @@ format: post
 			{% if page.comments == true %}
 				{% include _comments.html %}
 			{% endif %}
+
+			
 		</article>
 	</div><!-- /.medium-8.columns -->
 

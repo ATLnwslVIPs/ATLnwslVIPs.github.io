@@ -17,7 +17,9 @@ format: post
 				<div class="categories">
 					{% include _categories.html item=page %}
 				</div>
-
+				{% if page.published == false %}
+					<div class="article-draft-badge">DRAFT</div>
+				{% endif %}
 	
 				<div itemprop="name">
 					{% if page.subheadline %}
@@ -60,10 +62,14 @@ format: post
 				</div>
 			
 				{% if page.image.title %}
-				<figure class="article-hero">
+				<figure class="article-hero{% if page.published == false %} article-hero-draft{% endif %}">
 					<img src="{{ site.urlimg }}{{ page.image.title }}" width="970" alt="{{ page.title | escape_once }}"
 						itemprop="image">
-			
+
+					{% if page.published == false %}
+						<div class="draft-watermark" aria-hidden="true">DRAFT</div>
+					{% endif %}
+
 					{% if page.image.caption_url and page.image.caption %}
 					<figcaption class="text-right">
 						<a href="{{ page.image.caption_url }}">{{ page.image.caption }}</a>
@@ -75,13 +81,32 @@ format: post
 					{% endif %}
 				</figure>
 				{% endif %}
+
 			</header>
 
+			<!-- Perform site-wide formatting -->
+			{%- assign Formatting = site.data.site_wide_formatting -%}
 
+			{%- assign Bold_Terms = Formatting.bold | default: empty | join: "||" -%}
+			{%- assign Italic_Terms = Formatting.italics | default: empty | join: "||" -%}
 
-			<div itemprop="articleSection">
-			{{ content }}
+			{%- capture Replace_Rules -%}
+			{%- for Rule in Formatting.replace -%}
+			{{ Rule.from }}=>{{ Rule.to }}{%- unless forloop.last -%}||{%- endunless -%}
+			{%- endfor -%}
+			{%- endcapture -%}
+
+			<div
+				itemprop="articleSection"
+				class="articleSection js-site-wide-formatting"
+				data-bold-terms="{{ Bold_Terms | escape }}"
+				data-italic-terms="{{ Italic_Terms | escape }}"
+				data-replace-rules="{{ Replace_Rules | strip | escape }}"
+			>
+				{{ content }}
 			</div>
+
+
 
 			{% if page.show_meta == true %}
 				{% include _meta_information.html %}

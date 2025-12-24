@@ -1,0 +1,87 @@
+bold:
+  - Premier League
+  - Major League Soccer
+  - MLS Players Association
+  - MLS Cup Final
+  - MLS Cup
+  - MLS
+  - USL Championship
+  - CONCACAF
+  - Bolton Wanderers
+  - Bolton
+  - EFL Championship
+  - Atlanta United FC
+  - Atlanta United
+  - Atlanta
+  - ATLUTD
+  - Manchester City
+  - AMB Sports and Entertainment
+  - AMBSE
+  - NWSL
+  - Fort Lauderdale United FC
+  - Nottingham Forest
+  - Preston North End
+  - Preston
+  - West Ham United
+  - West Ham
+  - Derby County
+  - Olympique de Marseille
+  - Marseille
+  - UEFA Cup
+  - FIFA
+  - World Cup
+  - AFC Ajax
+  - Burnley
+  - Seattle Sounders
+  - Sounders
+  - D.C. United
+  - USMNT
+  - USWNT
+  - USYNT
+  - Toronto FC
+  - Minnesota United
+  - West Bromwich Albion
+  - Inter Miami CF
+  - Inter Miami
+  - TST
+  - Chattanooga FC
+  - NYRB
+  - CONCACAF
+  - U.S. Soccer
+  - US Soccer
+  - NISA
+  - Memphis 901
+  - Fulham
+  - FC Dallas
+  - AFC Bournemouth
+  - Bournemouth
+  - Rangers
+  - Scottish Premiership
+  - Hibernian
+  - ECNL
+  - Gabriel Heinze
+  - Ballon d'Or
+  - Ballon d’Or
+  - NWSLPA
+  - NWSL Players Association
+
+italics:
+  - "The Athletic"
+  - "Five Stripes"
+  - "Soccer Down Here"
+  - "ATLUTD FanTV"
+  - "Georgia Public Broadcasting"
+  - ESPN FC
+  - ESPN
+  - Guardian
+  - SportsPro Media
+
+replace:
+  - from: "teh"
+    to: "the"
+  - from: "Almiron"
+    to: "Almirón"
+  - from: "—"
+    to: "-"
+
+nowrap:
