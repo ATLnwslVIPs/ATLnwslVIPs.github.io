@@ -37,9 +37,9 @@
                       {%- for pair in site.data.authors -%}
                         {%- assign author_id = pair[0] -%}
                         {%- assign author    = pair[1] -%}
-                        {%- assign posts     = site.posts | where: "author", author_id -%}
+                        {%- assign authored_docs = site.documents | where: "author", author_id -%}
 
-                        {%- if posts.size > 0 -%}
+                        {%- if authored_docs.size > 0 -%}
                           {%- assign author_slug = author_id | slugify -%}
                           <li class="nav-dropdown-item">
                             <a href="{{ base }}/authors/{{ author_slug }}/">
@@ -90,9 +90,9 @@
                       {%- for pair in site.data.authors -%}
                         {%- assign author_id = pair[0] -%}
                         {%- assign author    = pair[1] -%}
-                        {%- assign posts     = site.posts | where: "author", author_id -%}
+                        {%- assign authored_docs = site.documents | where: "author", author_id -%}
 
-                        {%- if posts.size > 0 -%}
+                        {%- if authored_docs.size > 0 -%}
                           {%- assign author_slug = author_id | slugify -%}
                           <li class="nav-dropdown-item">
                             <a href="{{ base }}/authors/{{ author_slug }}/">
