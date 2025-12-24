@@ -6,7 +6,7 @@ timezone: America/New_York
 Last_Updated: 2025-11-30
 ---
 
-**Atlanta NWSL VIPs** is independently operated by an analyst, archivist, and long-time supporter of soccer.  It was created during the early months of COVID - a time when everyone was stuck at home looking for something productive to focus on. What started as a simple project to organize match stats quickly turned into a long-term effort to document Atlanta United in a clear, accurate, and meaningful way.
+**Atlanta NWSL VIPs** is independently operated by an analyst, archivist, and long-time supporter of soccer.  It was created during the early months of COVID - a time when everyone was stuck at home looking for something productive to focus on. What started as a simple project to organize match stats quickly turned into a long-term effort to document Atlanta in a clear, accurate, and meaningful way.
 
 
 
@@ -17,20 +17,20 @@ Today, **Atlanta NWSL VIPs** brings together analysis, research, historical arch
 This site brings together multiple ongoing projects, including:
 * Match Analysis and Reporting
 * Tracking current and former players
-* Detailed match reports for Atlanta United and related competitions
+* Detailed match reports for Atlanta and related competitions
 * Player-specific breakdowns, including xG, duels, key actions, and other advanced metrics
 * In-game commentary
 * Post-match Articles built from a balanced perspective
 
-**Atlanta NWSL VIPs** aims to create a dependable, fact-based resource for Atlanta United supporters - something that documents the club’s past and present without noise, speculation, or shortcuts.
+**Atlanta NWSL VIPs** aims to create a dependable, fact-based resource for Atlanta supporters - something that documents the club’s past and present without noise, speculation, or shortcuts.
 
 ### Match Reports and Analysis ###
 You’ll find data-driven match breakdowns, player highlights, trends, and performance insights - all created from custom tools and scripts developed specifically for this project.
 
 ### Historical Projects ###
-A major part of **ATLUTD VIPs** is preserving the full history of the club:
+A major part of **Atlanta NWSL VIPs** is preserving the full history of the club:
 
-* A long-term project to rebuild and verify Atlanta United’s complete match history
+* A long-term project to rebuild and verify Atlanta's complete match history
 * Manager timelines, performance charts, and competition-specific records
 * Archiving of rosters, staff, player bios, and statistical profiles
 
@@ -45,7 +45,7 @@ This infrastructure allows the project to stay consistent, and sustainable, whil
 
 ### Articles and Features ###
 
-Beyond stats and reports, **ATLUTD VIPs** publishes produces long-form articles about:
+Beyond stats and reports, **Atlanta NWSL VIPs** publishes produces long-form articles about:
 * Key moments in club history
 * Player stories
 * Tactical and roster-building trends
@@ -53,8 +53,8 @@ Beyond stats and reports, **ATLUTD VIPs** publishes produces long-form articles 
 
 ### The Goal ###
 
-Atlanta United has quickly built one of the strongest soccer identities in the United States.
-The goal of **ATLUTD VIPs** is to preserve that story — and provide resources that help supporters understand the full picture, not just match by match but across seasons and years.
+Atlanta has quickly built one of the strongest soccer identities in the United States.
+The goal of **Atlanta NWSL VIPs** is to preserve that story — and provide resources that help supporters understand the full picture, not just match by match but across seasons and years.
 
 ### Thank You ###
 

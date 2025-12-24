@@ -6,7 +6,7 @@
 #
 # Resource › http://blog.sorryapp.com/blogging-with-jekyll/2014/02/06/adding-authors-to-your-jekyll-site.html
 
-ATL_NWSL_VIPs: # replace this with your info
+ATL_NWSL_VIPs: 
   name:      "ATL NWSL VIPs"
   siterole:  "Independent Atlanta NWSL Coverage.  Atlanta NWSL news, history, and more"
   uri:       "https://ATLnwslVIPs.com"
